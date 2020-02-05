@@ -1,11 +1,19 @@
 $( document ).ready( function(){
 	var flag = false, winner;
-	$( '#start_game' ).click( function(){
+
+	function init_game(){
 		flag = false;
 		$( '#start_game' ).text( 'Start' )
 		$('td').text('')
 		$( '#tt_board' ).show();
-		$( '#winner' ).text('').hide();
+		$( '#winner_text' ).text('');
+		$( '#winner' ).hide();
+	}
+	$( '#play_again' ).click(function(){
+		init_game();
+	});
+	$( '#start_game' ).click( function(){
+		init_game();
 	});
 	$( 'td' ).click(function(){
 		$( '#start_game' ).text( 'Restart' )
@@ -61,7 +69,8 @@ $( document ).ready( function(){
 		}
 		if ( flag ) {
 			$( '#tt_board' ).hide();
-			$( '#winner' ).html('<h2>Winner is: <span class="h1 text-bold">'+winner+'</span></h2>').show();
+			$( '#winner_text' ).html('<h2>Winner is: <span class="h1 text-bold">'+winner+'</span></h2>')
+			$( '#winner' ).show();
 		}
 	}
 });
